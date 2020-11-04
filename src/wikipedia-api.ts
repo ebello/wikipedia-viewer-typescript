@@ -1,3 +1,5 @@
+import { get } from './rest-api';
+
 const baseUrl = 'https://en.wikipedia.org/w/api.php';
 
 const joinParams = (params: Record<string, string>) => Object.keys(params).map((key) => `${key}=${params[key]}`).join('&');
@@ -12,12 +14,12 @@ interface PagesResult {
   }
 }
 
-// const searchCache = {};
+const searchCache: Record<string, PagesResult> = {};
 // eslint-disable-next-line import/prefer-default-export
 export const searchPages = async (query: string): Promise<PagesResult> => {
-  // if (searchCache[query]) {
-  //   return Promise.resolve(searchCache[query]);
-  // }
+  if (searchCache[query]) {
+    return Promise.resolve(searchCache[query]);
+  }
   const params = {
     action: 'query',
     list: 'search',
@@ -28,9 +30,8 @@ export const searchPages = async (query: string): Promise<PagesResult> => {
   const url = `${baseUrl}?origin=*&${joinParams(params)}`;
 
   try {
-    const response = await fetch(url);
-    const result = await response.json() as PagesResult;
-    // searchCache[query] = result;
+    const result = await get<PagesResult>(url);
+    searchCache[query] = result;
     return result;
   } catch (e) {
     throw new Error(e);
