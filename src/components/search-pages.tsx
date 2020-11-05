@@ -58,7 +58,7 @@ const SearchPages = (): JSX.Element => {
   return (
     <Combobox
       openOnFocus
-      onSelect={(item) => navigate(`/${item}`)}
+      onSelect={(item) => navigate(`/wiki/${item}`)}
       sx={{
         display: ['block', 'inline-block'],
         width: ['100%', '50%'],
