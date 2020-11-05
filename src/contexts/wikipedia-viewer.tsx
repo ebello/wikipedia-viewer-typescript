@@ -24,7 +24,7 @@ const WikipediaViewerContext = React.createContext<WikipediaContextValue>({
 
 const WikipediaViewer = ({ children }: ContextProps): JSX.Element => {
   const viewingHistoryStr = window?.localStorage.getItem('viewingHistory');
-  const defaultHistory = JSON.parse(viewingHistoryStr || '') as ViewingHistoryItem[] || [];
+  const defaultHistory = JSON.parse(viewingHistoryStr || '[]') as ViewingHistoryItem[];
   const [viewingHistory, setViewingHistory] = useState(defaultHistory);
 
   const addToViewingHistory = (title: string) => {

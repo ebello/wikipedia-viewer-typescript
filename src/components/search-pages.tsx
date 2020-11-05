@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui';
 import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate } from '@reach/router';
 import {
   Combobox,
   ComboboxInput,
@@ -52,11 +53,12 @@ const usePageSearch = (searchTerm: string) => {
 const SearchPages = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
   const { pages, history } = usePageSearch(searchTerm);
+  const navigate = useNavigate();
 
   return (
     <Combobox
       openOnFocus
-      // onSelect={(item) => navigate(`/wiki/${item}`)}
+      onSelect={(item) => navigate(`/${item}`)}
       sx={{
         display: ['block', 'inline-block'],
         width: ['100%', '50%'],

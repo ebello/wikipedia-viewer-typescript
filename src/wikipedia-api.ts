@@ -6,6 +6,7 @@ const joinParams = (params: Record<string, string>) => Object.keys(params).map((
 
 export interface Page {
   title: string,
+  pageText?: string,
 }
 
 interface PagesResult {
@@ -15,7 +16,6 @@ interface PagesResult {
 }
 
 const searchCache: Record<string, PagesResult> = {};
-// eslint-disable-next-line import/prefer-default-export
 export const searchPages = async (query: string): Promise<PagesResult> => {
   if (searchCache[query]) {
     return Promise.resolve(searchCache[query]);
@@ -38,20 +38,29 @@ export const searchPages = async (query: string): Promise<PagesResult> => {
   }
 };
 
-// export const parsePage = async (title) => {
-//   const params = {
-//     action: 'parse',
-//     page: title,
-//     format: 'json',
-//   };
+interface PageResult {
+  parse: {
+    title: string,
+    text: Record<string, string>,
+  }
+}
 
-//   const url = `${baseUrl}?origin=*&${joinParams(params)}`;
+export const parsePage = async (title: string): Promise<Page> => {
+  const params = {
+    action: 'parse',
+    page: title,
+    format: 'json',
+  };
 
-//   try {
-//     const response = await fetch(url);
-//     const result = await response.json();
-//     return result;
-//   } catch (e) {
-//     throw new Error(e);
-//   }
-// };
+  const url = `${baseUrl}?origin=*&${joinParams(params)}`;
+
+  try {
+    const { parse } = await get<PageResult>(url);
+    return {
+      title: parse.title,
+      pageText: parse.text['*'],
+    };
+  } catch (e) {
+    throw new Error(e);
+  }
+};
