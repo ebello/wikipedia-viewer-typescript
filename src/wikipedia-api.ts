@@ -46,13 +46,15 @@ interface PageResult {
 }
 
 export const parsePage = async (title: string): Promise<Page> => {
-  const params = {
+  const params: Record<string, string> = {
     action: 'parse',
     page: title,
     format: 'json',
   };
 
   const url = `${baseUrl}?origin=*&${joinParams(params)}`;
+  // const url = new URL(baseUrl);
+  // Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
 
   try {
     const { parse } = await get<PageResult>(url);

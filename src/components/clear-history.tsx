@@ -12,7 +12,7 @@ const ClearHistory = (): JSX.Element | null => {
     return (
       <Button
         onClick={() => clearViewingHistory()}
-        onKeyPress={() => clearViewingHistory()}
+        onKeyUp={() => clearViewingHistory()}
         sx={{
           py: 1,
           px: 2,

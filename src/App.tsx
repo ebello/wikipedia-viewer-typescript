@@ -15,7 +15,7 @@ interface WikiProps extends RouteComponentProps {
   pageTitle?: string,
 }
 
-const WikiPage = ({ pageTitle }: WikiProps) => (
+export const WikiPage = ({ pageTitle }: WikiProps): JSX.Element => (
   <ThemeProvider theme={theme}>
     <WikipediaViewer>
       <Styled.root>
@@ -43,9 +43,11 @@ const WikiPage = ({ pageTitle }: WikiProps) => (
           >
             <SearchPages />
           </header>
-          <main>
-            {pageTitle && <PageViewer title={pageTitle} />}
-          </main>
+          {pageTitle && (
+            <main>
+              <PageViewer title={pageTitle} />
+            </main>
+          )}
         </Container>
       </Styled.root>
     </WikipediaViewer>
@@ -67,7 +69,6 @@ const Wiki = (): JSX.Element => (
       noThrow
     />
     <WikiPage path="/wiki" />
-    {/* <WikiPage path=":pageTitle" /> */}
     <WikiPage path="/wiki/:pageTitle" />
   </Router>
 );

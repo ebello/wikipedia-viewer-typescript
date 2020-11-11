@@ -15,8 +15,8 @@ const usePageParse = (title: string) => {
     if (title) {
       parsePage(title).then((res) => {
         if (isFresh) {
-          setPage(res);
           addToViewingHistory(title);
+          setPage(res);
         }
       }).catch(() => {
         // TODO: handle error here
@@ -35,7 +35,7 @@ const PageViewer = ({ title }: { title: string }): JSX.Element | null => {
   if (page) {
     return (
       <React.Fragment>
-        <Styled.h1>{page.title}</Styled.h1>
+        <Styled.h1 role="heading">{page.title}</Styled.h1>
         {page.pageText && (
           // eslint-disable-next-line react/no-danger
           <div dangerouslySetInnerHTML={{ __html: page.pageText }} />
