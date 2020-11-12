@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Pages renders with no results or history 1`] = `
+.emotion-1 {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+.emotion-0 {
+  width: 100%;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    font-size: 24px;
+  }
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-1"
+      data-reach-combobox=""
+    >
+      <input
+        aria-autocomplete="both"
+        aria-controls="listbox--1"
+        aria-expanded="true"
+        aria-haspopup="listbox"
+        aria-label="Pages"
+        class="emotion-0"
+        data-reach-combobox-input=""
+        placeholder="Search Wikipedia"
+        role="combobox"
+        value=""
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Search Pages with viewingHistory renders 1`] = `
+.emotion-1 {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+.emotion-0 {
+  width: 100%;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    font-size: 24px;
+  }
+}
+
+.emotion-3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  color: primary;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: primary;
+  border: 0;
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 85%;
+  margin-left: 8px;
+  background-color: bgmuted;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-1"
+      data-reach-combobox=""
+    >
+      <input
+        aria-autocomplete="both"
+        aria-controls="listbox--4"
+        aria-expanded="true"
+        aria-haspopup="listbox"
+        aria-label="Pages"
+        class="emotion-0"
+        data-reach-combobox-input=""
+        placeholder="Search Wikipedia"
+        role="combobox"
+        value=""
+      />
+    </div>
+  </div>
+  <reach-portal>
+    <div
+      data-reach-combobox-popover=""
+      data-reach-popover=""
+      style="position: absolute; width: 0px; left: 0px; top: 0px;"
+      tabindex="-1"
+    >
+      <ul
+        data-reach-combobox-list=""
+        id="listbox--4"
+        role="listbox"
+      >
+        <h5
+          class="emotion-3"
+        >
+          Recent history
+          <button
+            class="emotion-2"
+          >
+            Clear history
+          </button>
+        </h5>
+        <li
+          aria-selected="false"
+          data-reach-combobox-option=""
+          id="106069776"
+          role="option"
+          tabindex="-1"
+        >
+          <span
+            data-suggested-value="true"
+          >
+            other
+          </span>
+        </li>
+        <li
+          aria-selected="false"
+          data-reach-combobox-option=""
+          id="-1347533726"
+          role="option"
+          tabindex="-1"
+        >
+          <span
+            data-suggested-value="true"
+          >
+            sample title
+          </span>
+        </li>
+        <li
+          aria-selected="false"
+          data-reach-combobox-option=""
+          id="2100213748"
+          role="option"
+          tabindex="-1"
+        >
+          <span
+            data-suggested-value="true"
+          >
+            sample title 2
+          </span>
+        </li>
+      </ul>
+    </div>
+  </reach-portal>
+</body>
+`;

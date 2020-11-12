@@ -9,12 +9,6 @@ import {
 import { ThemeProvider } from 'theme-ui';
 import theme from './theme';
 
-// const AllTheProviders = ({ children }: { children: ReactNode }): React.FC<{ children: ReactNode }> => (
-//   <ThemeProvider theme={theme}>
-//     {children}
-//   </ThemeProvider>
-// );
-
 type ProviderProps = {
   children: ReactNode,
 };
@@ -28,7 +22,7 @@ const AllTheProviders: React.FunctionComponent<ProviderProps> = ({ children }: P
 const customRender = (
   ui: React.ReactElement,
   options?: Omit<RenderOptions, 'queries'>,
-): RenderResult => render(ui, { wrapper: AllTheProviders, ...options });
+): RenderResult => render(<AllTheProviders>{ui}</AllTheProviders>, { ...options });
 
 export const renderWithRouter = (
   ui: React.ReactElement,
