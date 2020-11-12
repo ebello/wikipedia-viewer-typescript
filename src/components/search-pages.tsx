@@ -34,7 +34,7 @@ const usePageSearch = (searchTerm: string) => {
       const filteredHistory = matchSorter(uniqueHistoryTitles, searchTerm);
       setHistory(filteredHistory);
       searchPages(searchTerm).then((res) => {
-        if (isFresh && res.query) {
+        if (isFresh) {
           setPages(res.query.search);
         }
       }).catch(() => {

@@ -1,7 +1,9 @@
 import React from 'react';
 import { RenderResult, waitFor } from '@testing-library/react';
 import { History } from '@reach/router';
-import { renderWithRouter, screen, fireEvent } from '../test-utils';
+import {
+  renderWithRouter, screen, fireEvent, sleep,
+} from '../test-utils';
 import { WikipediaViewerContext } from '../contexts/wikipedia-viewer';
 import SearchPages from './search-pages';
 
@@ -65,6 +67,41 @@ describe('Search Pages', () => {
       fireEvent.click(screen.getByText('other'));
       const { history } = renderResult;
       expect(history.location.pathname).toBe('/wiki/other');
+    });
+  });
+
+  describe('with search results', () => {
+    let renderResult: RenderResult & { history: History };
+    beforeEach(() => {
+      renderResult = renderWithRouter(<SearchPages />);
+      fireEvent.change(screen.getByRole('combobox'), { target: { value: 'test' } });
+    });
+
+    it('renders', async () => {
+      await waitFor(() => {
+        const options = screen.getAllByRole('option');
+        expect(options).toHaveLength(2);
+        expect(options[0]).toHaveTextContent('test');
+        expect(options[1]).toHaveTextContent('testing');
+        const { baseElement } = renderResult;
+        expect(baseElement).toMatchSnapshot();
+      });
+    });
+
+    it('navigates to the page', async () => {
+      await waitFor(() => {
+        const options = screen.getAllByRole('option');
+        fireEvent.click(options[1]);
+        const { history } = renderResult;
+        expect(history.location.pathname).toBe('/wiki/testing');
+      });
+    });
+
+    it('does not set search results if unmounted', async () => {
+      const { unmount } = renderResult;
+      unmount();
+      await sleep(1000);
+      expect(screen.queryAllByRole('option')).toHaveLength(0);
     });
   });
 });

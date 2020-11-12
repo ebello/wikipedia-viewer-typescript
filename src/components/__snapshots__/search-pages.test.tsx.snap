@@ -47,6 +47,111 @@ exports[`Search Pages renders with no results or history 1`] = `
 </body>
 `;
 
+exports[`Search Pages with search results renders 1`] = `
+.emotion-1 {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+.emotion-0 {
+  width: 100%;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    font-size: 24px;
+  }
+}
+
+.emotion-2 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  color: primary;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-1"
+      data-reach-combobox=""
+    >
+      <input
+        aria-autocomplete="both"
+        aria-controls="listbox--36"
+        aria-expanded="true"
+        aria-haspopup="listbox"
+        aria-label="Pages"
+        class="emotion-0"
+        data-reach-combobox-input=""
+        placeholder="Search Wikipedia"
+        role="combobox"
+        value="test"
+      />
+    </div>
+  </div>
+  <reach-portal>
+    <div
+      data-reach-combobox-popover=""
+      data-reach-popover=""
+      style="position: absolute; width: 0px; left: 0px; top: 0px;"
+      tabindex="-1"
+    >
+      <ul
+        data-reach-combobox-list=""
+        id="listbox--36"
+        role="listbox"
+      >
+        <h5
+          class="emotion-2"
+        >
+          Search results
+        </h5>
+        <li
+          aria-selected="false"
+          data-reach-combobox-option=""
+          id="3556498"
+          role="option"
+          tabindex="-1"
+        >
+          <span
+            data-user-value="true"
+          >
+            test
+          </span>
+        </li>
+        <li
+          aria-selected="false"
+          data-reach-combobox-option=""
+          id="-1422446064"
+          role="option"
+          tabindex="-1"
+        >
+          <span
+            data-user-value="true"
+          >
+            test
+          </span>
+          <span
+            data-suggested-value="true"
+          >
+            ing
+          </span>
+        </li>
+      </ul>
+    </div>
+  </reach-portal>
+</body>
+`;
+
 exports[`Search Pages with viewingHistory renders 1`] = `
 .emotion-1 {
   display: block;
